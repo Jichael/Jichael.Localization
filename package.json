@@ -4,13 +4,13 @@
   "displayName": "Jichaels Localization",
   "description": "Simple text localization manager using JSON files.",
   "unity": "2019.3",
-  "dependencies": {
-    "com.unity.textmeshpro": "3.0.0-preview.13",
-    "com.unity.nuget.newtonsoft-json": "1.1.2"
-  },
   "author": {
     "name": "Jichaels",
     "email": "Jichael38@hotmail.fr"
+  },
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.0-preview.13",
+    "com.unity.nuget.newtonsoft-json": "1.1.2"
   },
   "samples": [
     {
