@@ -1,0 +1,22 @@
+{
+  "name": "com.jichaels.localization",
+  "version": "0.1.1-preview",
+  "displayName": "Jichaels Localization",
+  "description": "Simple text localization manager using JSON files.",
+  "unity": "2019.3",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.0-preview.13",
+    "com.unity.nuget.newtonsoft-json": "1.1.2"
+  },
+  "author": {
+    "name": "Jichaels",
+    "email": "Jichael38@hotmail.fr"
+  },
+  "samples": [
+    {
+      "displayName": "Localization example",
+      "description": "Example on how to localize any text.",
+      "path": "Samples~/LocalizationExample"
+    }
+  ]
+}
