@@ -18,10 +18,18 @@ namespace Jichaels.Localization
 
         private const string LANGUAGE_FOLDER_NAME = "Languages";
         private const string LANGUAGE_FILE_EXTENSION = "json";
-
+        
         private void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
             GetLanguageData(defaultLanguage);
         }
 
@@ -76,8 +84,7 @@ namespace Jichaels.Localization
 
         private static string CombinePath(string path, string fileName, string extension)
         {
-            string filePath = Path.Combine(StreamingAssetsPath(path), $"{fileName}.{extension}");
-            return filePath;
+            return Path.Combine(StreamingAssetsPath(path), $"{fileName}.{extension}");
         }
 
         private static string StreamingAssetsPath(string path)

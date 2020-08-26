@@ -9,7 +9,7 @@
     "email": "Jichael38@hotmail.fr"
   },
   "dependencies": {
-    "com.unity.textmeshpro": "3.0.0-preview.13",
+    "com.unity.textmeshpro": "2.0.1",
     "com.unity.nuget.newtonsoft-json": "1.1.2"
   },
   "samples": [

@@ -14,7 +14,7 @@ namespace Jichaels.Localization
 
         private bool _added;
 
-        private void Awake()
+        private void Start()
         {
             AddEntry();
             SetValue();
