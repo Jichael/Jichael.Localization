@@ -6,7 +6,7 @@ on:
 
 jobs:
   rename_samples:
-    name: Create branches
+    name: Rename tilded folders
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
