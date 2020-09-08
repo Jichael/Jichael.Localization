@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Jichaels.Localization
 {
@@ -9,6 +11,8 @@ namespace Jichaels.Localization
     {
         public static LanguageManager Instance { get; private set; }
         public string CurrentLanguage { get; private set; }
+        
+        public bool IsReady { get; private set; }
         
         [SerializeField] private string defaultLanguage;
 
@@ -35,9 +39,17 @@ namespace Jichaels.Localization
 
         private void GetLanguageData(string newLanguage)
         {
+            IsReady = false;
             CurrentLanguage = newLanguage;
-            
+
             string filePath = CombinePath(LANGUAGE_FOLDER_NAME, CurrentLanguage, LANGUAGE_FILE_EXTENSION);
+
+            if (filePath.Contains("://") || filePath.Contains(":///"))
+            {
+                StartCoroutine(GetLanguageDataCo(filePath));
+                return;
+            }
+
             if (!File.Exists(filePath))
             {
                 Debug.LogError($"GetLanguageData - Could not load lang file : '{filePath}' doesn't exist !", this);
@@ -45,8 +57,22 @@ namespace Jichaels.Localization
             }
             
             string json = File.ReadAllText(filePath);
-            
+
             _languageData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            IsReady = true;
+        }
+
+        private IEnumerator GetLanguageDataCo(string uri)
+        {
+            UnityWebRequest unityWebRequest = UnityWebRequest.Get(uri);
+            yield return unityWebRequest.SendWebRequest();
+            if (unityWebRequest.isHttpError || unityWebRequest.isNetworkError)
+            {
+                Debug.LogError($"Error while getting {uri}. Code : {unityWebRequest.error}");
+                yield break;
+            }
+            _languageData = JsonConvert.DeserializeObject<Dictionary<string, string>>(unityWebRequest.downloadHandler.text);
+            IsReady = true;
         }
 
         public string RequestValue(string key)
