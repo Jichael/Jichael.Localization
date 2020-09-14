@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Jichaels.Localization
+namespace CustomPackages.Silicom.Localization.Runtime
 {
 
     [RequireComponent(typeof(TMP_Text))]

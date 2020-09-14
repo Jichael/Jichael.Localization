@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Jichaels.Localization
+namespace CustomPackages.Silicom.Localization.Runtime
 {
     public class LanguageManager : MonoBehaviour
     {
