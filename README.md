@@ -1,16 +1,9 @@
-### Jichaels's Localization
+Ce package permet la mise en place de fichier de traduction pour localiser les différents textes présents dans l'application.
 
-It is a simple text localization manager using TextMeshPro. Languages files in JSON format that allow serialization/deserialization using the NewtonSoftJson dll.
+Les fichiers de langues doivent être dans le dossier StreamingAssets/Languages et au format json.
 
+Le script LanguageManager doit être initialisé et présent dans la scène.
 
-### Dependencies
+Ensuite, il suffit de rajouter le script LanguageEntry sur le composent de TextMeshPro que l'on veut traduire, et renseigner sa clé de traduction.
 
-  * None
-  
-    
-## Installation
-
- * As of today, UPM does not yet support git dependencies. You need to manually install them in order.
- * On Unity's top banner, go to : Window/PackageManager
- * On the top left, click the "+" button -> "Add package from git URL..."
- * Use the following syntax : https://github.com/Jichael/Jichaels.Localization.git#TheReleaseYouWant
+Le script LanguageManager possède aussi une API pour traduire du texte directement en code pour gérer tout ce qui est dynamique.
