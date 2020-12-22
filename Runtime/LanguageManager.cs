@@ -66,7 +66,7 @@ namespace CustomPackages.Silicom.Localization.Runtime
         {
             UnityWebRequest unityWebRequest = UnityWebRequest.Get(uri);
             yield return unityWebRequest.SendWebRequest();
-            if (unityWebRequest.isHttpError || unityWebRequest.isNetworkError)
+            if (unityWebRequest.result == UnityWebRequest.Result.ProtocolError || unityWebRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogError($"Error while getting {uri}. Code : {unityWebRequest.error}");
                 yield break;
